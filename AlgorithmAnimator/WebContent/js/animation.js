@@ -119,7 +119,7 @@ function runAnimation(stream,freq)
 		
 		i++;
 		
-	}, 100);
+	}, 3000);
 		
 		
 		

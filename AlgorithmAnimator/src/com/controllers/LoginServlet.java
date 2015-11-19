@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.models.UserDetails;
 import com.models.LoginBean;
@@ -49,8 +50,10 @@ public class LoginServlet extends HttpServlet {
 		}
 		else
 		{System.out.println("hello");
+		
+			HttpSession session = request.getSession();
 			RequestDispatcher rd= request.getRequestDispatcher("learner_home.jsp");
-			request.setAttribute("user", user);
+			session.setAttribute("user", user);
 		
 			rd.forward(request, response);
 		}

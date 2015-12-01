@@ -6,7 +6,7 @@ import org.hibernate.cfg.Configuration;
 
 public class LoginBean{
 
-	public UserDetails loginUser(String userName, String password, String userType) {
+	public UserDetails loginUser(String userName, String password) {
 		// TODO Auto-generated method stub
 		
 		SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();

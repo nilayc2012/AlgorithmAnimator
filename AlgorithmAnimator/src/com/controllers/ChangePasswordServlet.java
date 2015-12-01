@@ -11,19 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.models.UserDetails;
-import com.models.LoginBean;
+import com.models.ChangePasswordBean;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class ChangePasswordServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/ChangePasswordServlet")
+public class ChangePasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public ChangePasswordServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,28 +34,18 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String userName= request.getParameter("uname");
+		HttpSession session=request.getSession();
+		
+		String currentPassword= request.getParameter("current");
 		String password=request.getParameter("pwd");
+		UserDetails user=(UserDetails)session.getAttribute("user");
 		
-		LoginBean lb=new LoginBean();
-		UserDetails user=lb.loginUser(userName, password);
+		ChangePasswordBean cb=new ChangePasswordBean();
+		String status=cb.changePassword(user.getUserName(),currentPassword,password);
 		
-		if(user==null)
-		{
-			RequestDispatcher rd= request.getRequestDispatcher("index.jsp");
-			request.setAttribute("status", "login failure");
-			
-			rd.forward(request, response);
-		}
-		else
-		{System.out.println("hello");
-		
-			HttpSession session = request.getSession();
-			RequestDispatcher rd= request.getRequestDispatcher("learner_home.jsp");
-			session.setAttribute("user", user);
-		
-			rd.forward(request, response);
-		}
+		request.setAttribute("status", status);
+		RequestDispatcher rd= request.getRequestDispatcher("change_password.jsp");
+		rd.forward(request, response);
 	}
 
 }

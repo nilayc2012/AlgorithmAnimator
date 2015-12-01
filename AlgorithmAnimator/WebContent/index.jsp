@@ -56,13 +56,13 @@
             <label>
               Enter Password<span class="req">*</span>
             </label>
-            <input type="password" name="pwd" required autocomplete="off"/>
+            <input type="password" name="pwd" id="pwd" onchange ="rangeCheck();" required autocomplete="off"/>
           </div>
           <div class="field-wrap">
             <label>
               Confirm Password<span class="req">*</span>
             </label>
-            <input type="password" name="cpwd" required autocomplete="off"/>
+            <input type="password" name="cpwd" id="cpwd" onchange ="passwordCheck();" required autocomplete="off"/>
           </div>
           <div class="field-wrap">
             <label>
@@ -75,7 +75,7 @@
             <label>
               Phone Number<span class="req">*</span>
             </label>
-            <input type='tel' pattern='\d{10}' name="phone" required autocomplete="off"/>
+            <input type='tel' pattern='\d{10}' name="phone" id="phone" onchange = "patternMismatch();"required autocomplete="off"/>
           </div>
             
           <button type="submit" class="button button-block">Get Started</button>
@@ -102,12 +102,6 @@
             <input type="password"required name="pwd" autocomplete="off"/>
           </div>
           
-          <div class="radios">
-            <label>
-              Admin <input type="radio" name="utype" value="admin"/>
-              Learner <input type="radio" name="utype" value="learner"/>
-            </label>
-          </div>  
           
           <p class="forgot"><a href="#">Forgot Password?</a></p>
           
@@ -123,6 +117,7 @@
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
         <script src="js/index.js"></script>
+        <script src="js/password_check.js"></script>
 
     <% String status =(String) request.getAttribute("status");
     if(status!=null)
@@ -154,7 +149,7 @@
     else if(status.equals("login failure"))
     {
     	%><script type="text/javascript">
-    	window.alert("Login Failure");
+    	window.alert("Usename or password doesn't exist");
     	</script>
     	<%
     	request.setAttribute("status", null);

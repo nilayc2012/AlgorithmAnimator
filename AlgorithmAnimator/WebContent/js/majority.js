@@ -1,5 +1,5 @@
 	var frequentElements= new Map();
-function runAnimation(stream,freq)
+function runMajority(stream,freq)
 {
 	
 	//Replacing all the special characters and extra spaces with a single space
@@ -113,15 +113,21 @@ function runAnimation(stream,freq)
 		
 		finalDisp=document.getElementById("final-output");
 		
-		finalDisp.innerHTML="<div class='f-out' id='final-data'>The words with frequency greater than or equal to "+freq+" are </div>";
+		if(frequentElements.size==0)
+			finalDisp.innerHTML="<div class='f-out' id='final-data'>No word has majority </div>";
+		else
+		{
+			finalDisp.innerHTML="<div class='f-out' id='final-data'>The word with Majority is </div>";
 		
-		finalDisp=document.getElementById("final-data");
-		frequentElements.forEach(function(value, key){
-		console.log(value+" "+key);
-		finalDisp.innerHTML=finalDisp.innerHTML+"<span style='font-weight:bold;'>"+key+","+"</span>";
-		},frequentElements);
-		frequentElements.clear();
-		document.getElementById("back-button").disabled=false;
+			finalDisp=document.getElementById("final-data");
+		
+			frequentElements.forEach(function(value, key){
+					console.log(value+" "+key);
+					finalDisp.innerHTML=finalDisp.innerHTML+"<span style='font-weight:bold;'>"+key+","+"</span>";
+			},frequentElements);
+		}
+			frequentElements.clear();
+			document.getElementById("back-button").disabled=false;
 			}
 		
 		i++;

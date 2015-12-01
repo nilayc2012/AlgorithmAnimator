@@ -1,5 +1,4 @@
 package com.models;
-import java.util.Date;
 
 import javax.persistence.*;
 
@@ -9,7 +8,6 @@ public class UserDetails {
 	@Id
 	private String userName;
 	private String password;
-	private String userType;
 	private String firstName;
 	private String lastName;
 	private String emailId;
@@ -27,12 +25,7 @@ public class UserDetails {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getUserType() {
-		return userType;
-	}
-	public void setUserType(String userType) {
-		this.userType = userType;
-	}
+
 	public String getFirstName() {
 		return firstName;
 	}

@@ -1,5 +1,5 @@
 	var frequentElements= new Map();
-function runAnimation(stream,freq)
+function runFrequent(stream,freq,word)
 {
 	
 	//Replacing all the special characters and extra spaces with a single space
@@ -113,13 +113,15 @@ function runAnimation(stream,freq)
 		
 		finalDisp=document.getElementById("final-output");
 		
-		finalDisp.innerHTML="<div class='f-out' id='final-data'>The words with frequency greater than or equal to "+freq+" are </div>";
 		
-		finalDisp=document.getElementById("final-data");
-		frequentElements.forEach(function(value, key){
-		console.log(value+" "+key);
-		finalDisp.innerHTML=finalDisp.innerHTML+"<span style='font-weight:bold;'>"+key+","+"</span>";
-		},frequentElements);
+		if(frequentElements.has(word))
+			
+			finalDisp.innerHTML="<div class='f-out' id='final-data'>The word <span style='font-weight:bold;'>"+word+"</span> is a frequent item </div>";
+		
+		else
+			
+			finalDisp.innerHTML="<div class='f-out' id='final-data'>The word <span style='font-weight:bold;'>"+word+"</span> is not a frequent item </div>";
+
 		frequentElements.clear();
 		document.getElementById("back-button").disabled=false;
 			}

@@ -14,15 +14,16 @@
     
         <script src="js/angular.js"></script>
 <script src="js/angular-animate.js"></script> 
-    <script src="js/animation.js"></script>
+    <script src="js/majority.js"></script>
   </head>
 
   <body>
   <% String stream = request.getParameter("data-stream");
-		int freq=Integer.parseInt(request.getParameter("k-value"));
+		
 		stream=stream.replaceAll("[^a-zA-Z]+"," ");
 		stream=stream.replaceAll("\\s+", " ");
 	String[] streamArray =stream.split(" ");
+	int freq=streamArray.length/2;
 	int k =streamArray.length/freq;
 	int i=0;
 %>
@@ -65,11 +66,12 @@
 	</div>
 	</div>
 	<div><div id="final-output"></div>
-	<div class="button-class"><div id="new-button"></div></div><button type="submit" class="button-block" id="mybutton" onclick="runAnimation('<%=stream%>','<%=freq%>');">Start Simulation</button>        
+	<div class="button-class"><div id="new-button"></div></div><button type="submit" class="button-block" id="mybutton" onclick="runMajority('<%=stream%>','<%=freq%>');">Check Majority</button>        
 	</div>
 	</div>
 </div>
     
+
     
     
     

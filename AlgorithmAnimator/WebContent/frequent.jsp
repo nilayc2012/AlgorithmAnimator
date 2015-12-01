@@ -14,12 +14,13 @@
     
         <script src="js/angular.js"></script>
 <script src="js/angular-animate.js"></script> 
-    <script src="js/animation.js"></script>
+    <script src="js/frequent.js"></script>
   </head>
 
   <body>
   <% String stream = request.getParameter("data-stream");
 		int freq=Integer.parseInt(request.getParameter("k-value"));
+		String word=request.getParameter("k-word"); 
 		stream=stream.replaceAll("[^a-zA-Z]+"," ");
 		stream=stream.replaceAll("\\s+", " ");
 	String[] streamArray =stream.split(" ");
@@ -65,11 +66,12 @@
 	</div>
 	</div>
 	<div><div id="final-output"></div>
-	<div class="button-class"><div id="new-button"></div></div><button type="submit" class="button-block" id="mybutton" onclick="runAnimation('<%=stream%>','<%=freq%>');">Start Simulation</button>        
+	<div class="button-class"><div id="new-button"></div></div><button type="submit" class="button-block" id="mybutton" onclick="runFrequent('<%=stream%>','<%=freq%>','<%=word%>');">Check Frequency</button>        
 	</div>
 	</div>
 </div>
     
+
     
     
     

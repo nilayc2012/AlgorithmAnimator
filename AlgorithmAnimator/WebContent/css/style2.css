@@ -41,10 +41,19 @@ div {
   top: 175px;
   left: 80px;
   display: inline-block;
-  width: 20em;
-  height: 5em;
+  width: 30em;
+  height: 100%;
   background: #fdfdfd;
 }
+
+.button-class{
+	
+	  position: relative;
+  top: 30px;
+  left: 10px;
+	
+}
+
 .loader
 {
 	position: relative;

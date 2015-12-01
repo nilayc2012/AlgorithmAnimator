@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.models.LoginBean;
+
 import com.models.RegistrationClass;
 
 /**
@@ -34,7 +34,6 @@ public class RegServlet extends HttpServlet {
 		
 		String userName= request.getParameter("uname");
 		String password=request.getParameter("pwd");
-		String cpassword=request.getParameter("cpwd");
 		String fName=request.getParameter("fname");
 		String lName=request.getParameter("lname");
 		String email=request.getParameter("email");
@@ -42,14 +41,10 @@ public class RegServlet extends HttpServlet {
 		
 		RequestDispatcher rd= request.getRequestDispatcher("index.jsp");
 		
-		if(password!=cpassword)
-		{
-			request.setAttribute("status", "Password Mismatch");
-		}
-		
+
 		RegistrationClass reg=new RegistrationClass();
 		
-		String status=reg.storeUserDetails(userName, password,cpassword, "learner", fName, lName,email, phone);
+		String status=reg.storeUserDetails(userName, password, fName, lName,email, phone);
 		
 		
 		request.setAttribute("status", status);

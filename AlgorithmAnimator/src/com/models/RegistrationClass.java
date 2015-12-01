@@ -7,7 +7,7 @@ import org.hibernate.cfg.Configuration;
 
 public class RegistrationClass{
 
-	public String storeUserDetails(String userName, String password,String cpassword, String userType, String firstName, String lastName,
+	public String storeUserDetails(String userName, String password, String firstName, String lastName,
 			String emailId, String phoneNo) {
 		
 			
@@ -25,7 +25,6 @@ public class RegistrationClass{
 			user=new UserDetails();
 			user.setUserName(userName);
 			user.setPassword(password);
-			user.setUserType(userType);
 			user.setFirstName(firstName);
 			user.setLastName(lastName);
 			user.setEmailId(emailId);
@@ -38,7 +37,7 @@ public class RegistrationClass{
 		}
 		else
 		{
-			return "user exists";
+			return "exists";
 		}
 	
 	}
